@@ -1,6 +1,6 @@
 import { fSeq, objMap, objForeach } from './outil';
 import { fAttribute, tag, textNode, fListen } from './dom';
-import { Code, Text, Paragraph, Heading } from './parser';
+import { Code, Text, Ply, Paragraph, Heading } from './parser';
 
 export function renderApp({ input, caret }) {
 
@@ -75,8 +75,15 @@ function createParagraph(content) {
   }));
 }
 
+function createPly(content) {
+  return tag('div', [], fAttribute({ 'data-ply': content }));
+}
+
 function createPTag(type, content) {
   switch (type) {
+  case Ply:
+    return createPly(content);
+    break;
   case Paragraph:
     return createParagraph(content);
     break;

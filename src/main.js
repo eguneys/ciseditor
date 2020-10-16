@@ -1,11 +1,19 @@
 import { parseMdFull } from './parser';
 import { scrollPreview, updatePreview, renderApp } from './render';
+import ChessMd from 'chessmd';
 
-export function app(element, options) {
+export function app(element, options = {}) {
+
+  let { input: fInput } = options;
+
+  if (!fInput) {
+    fInput = () => {};
+  }
 
   let tags;
 
   let { $wrapper, 
+        $editor,
         $preview } = renderApp({
           // scroll: _ => {
           //   $preview.scrollTop = _ * $preview.scrollHeight - $preview.offsetHeight;
@@ -27,7 +35,11 @@ export function app(element, options) {
             }
           },
           input: _ => {
+            fInput(_);
             tags = updatePreview(parseMdFull(_), $preview);
+            try {
+              ChessMd($preview, {});
+            } catch (e) {}
           }});
 
   element.appendChild($wrapper);

@@ -2,8 +2,8 @@ import { parseMd, parseParagraph } from '../parser';
 
 export default function() {
 
-  notation();
-  // parser();
+  // notation();
+  parser();
 }
 
 function notation() {
@@ -19,6 +19,14 @@ function notation() {
 }
 
 function parser() {
+
+  let paraPly = parseMd(`
+laksjf k
+=18
+
+`);
+
+  console.log(paraPly);
 
   let paraStart = parseMd(`This is a paragraph`);
 

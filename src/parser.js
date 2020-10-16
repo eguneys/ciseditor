@@ -1,5 +1,6 @@
 export const Paragraph = 1,
-Heading = 2;
+Heading = 2,
+Ply = 3;
 
 export const Code = 1,
 Text = 2;
@@ -21,7 +22,7 @@ export function parseParagraph(para) {
 
     if (cur === Text) {
       if ((match = _.match(codeBeginRegex))) {
-        res.push({ type: Text, content: acc.join(' ') });
+        res.push({ type: Text, content: acc.join(' ') + ' ' });
         cur = Code;
         acc = [_];
 
@@ -71,7 +72,8 @@ export function parseMdFull(md) {
 }
 
 export function parseMd(md) {
-  const headingRegex = /(^|\n)#([^\n]*)/;
+  const headingRegex = /^#([^\n]*)/;
+  const plyRegex = /^=([^\n]*)/;
 
   let paragraph = [];
   let res = [];
@@ -92,7 +94,7 @@ export function parseMd(md) {
 
     let match;
 
-    if ((match = line.match(headingRegex))) {
+    if ((match = line.match(plyRegex))) {
       let content = paragraph.join('\n');
       if (paragraph.length) {
         res.push({ type: Paragraph, pos, content });
@@ -100,7 +102,18 @@ export function parseMd(md) {
         pos += content.length + 1;
       }
 
-      content = match[2];
+      content = match[1];
+      res.push({ type: Ply, pos, content });
+      pos += content.length + 2;
+    } else if ((match = line.match(headingRegex))) {
+      let content = paragraph.join('\n');
+      if (paragraph.length) {
+        res.push({ type: Paragraph, pos, content });
+        paragraph = [];
+        pos += content.length + 1;
+      }
+
+      content = match[1];
       res.push({ type: Heading, pos, content });
       pos += content.length + 2;
     } else {

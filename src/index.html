@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>webpack-minimal</title>
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon-16x16.png"/>
+    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/vendor/main.css"/>
 
     <style>
           html, body {
@@ -81,7 +83,9 @@
 
   <script>
 
-   Tetris(document.getElementById('app'), {});
+   Tetris(document.getElementById('app'), { input(_) {
+     console.log(_);
+   }});
    
   </script>
 
