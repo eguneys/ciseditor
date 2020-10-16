@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>webpack-minimal</title>
     <link rel="shortcut icon" type="image/png" href="../assets/favicon-16x16.png"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+
     <style>
           html, body {
          width: 100%;
@@ -15,14 +16,60 @@
      }
 
      body {
-         font-family: 'Roboto', sans-serif;
+         font-family: 'Open Sans', sans-serif;
          background: black;
+         color: white;
      }
 
      section {
          width: 100%;
          height: 100%;
          background: #202020;
+     }
+
+     #app {
+         width: 100vw;
+         height: 100vh;
+     }
+
+
+     h1, h2 {
+         font-family: 'Roboto' sans-serif;
+         color: pink;
+         margin: 0;
+     }
+
+     h1 {
+         font-size: 2.2em;
+     }
+
+     h2 {
+         margin: 1em 0;
+         font-size: 1.4em;
+     }
+
+     p {
+         color: white;
+         font-size: 1.4em;
+     }
+
+
+     [data-fen],
+     [data-ply],
+     .hover-ply {
+         width: 60vmin;
+         height: 0;
+         padding-bottom: 60vmin;
+     }
+
+     img {
+         width: 60vmin;
+     }
+
+     [data-fen],
+     [data-ply] {
+         position: relative;
+         margin-left: 1em;
      }
     </style>
 </head>
