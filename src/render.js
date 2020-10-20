@@ -16,6 +16,7 @@ export function renderApp({ input, caret }) {
   let $editor = tag('ch-editor', [
     tag('textarea', [], editEvents)
   ]);
+
   let $preview = tag('ch-preview');
 
   let $wrapper = tag('ch-wrap',

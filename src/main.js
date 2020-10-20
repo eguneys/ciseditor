@@ -4,7 +4,7 @@ import ChessMd from 'chessmd';
 
 export function app(element, options = {}) {
 
-  let { input: fInput } = options;
+  let { input: fInput, content = '' } = options;
 
   if (!fInput) {
     fInput = () => {};
@@ -15,9 +15,7 @@ export function app(element, options = {}) {
   let { $wrapper, 
         $editor,
         $preview } = renderApp({
-          // scroll: _ => {
-          //   $preview.scrollTop = _ * $preview.scrollHeight - $preview.offsetHeight;
-          // },
+          content,
           caret: caret => {
             let tag;
 
@@ -41,6 +39,12 @@ export function app(element, options = {}) {
               ChessMd($preview, {});
             } catch (e) {}
           }});
+
+  $editor.firstChild.value = content;
+  tags = updatePreview(parseMdFull($editor.firstChild.value), $preview);
+  try {
+    ChessMd($preview, {});
+  } catch (e) {}  
 
   element.appendChild($wrapper);
 
