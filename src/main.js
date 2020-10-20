@@ -1,6 +1,8 @@
-import { parseMdFull } from './parser';
-import { scrollPreview, updatePreview, renderApp } from './render';
+import { scrollPreview, renderApp } from './render';
+
 import ChessMd from 'chessmd';
+import { md } from 'chessmd';
+let { parseMdFull, updatePreview } = md;
 
 export function app(element, options = {}) {
 
