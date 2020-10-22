@@ -38,16 +38,12 @@ export function app(element, options = {}) {
           input: throttle(2000, _ => {
             fInput(_);
             tags = updatePreview(parseMdFull(_), $preview);
-            try {
-              ChessMd($preview, {});
-            } catch (e) {}
+            ChessMd($preview, {});
           })});
 
   $editor.firstChild.value = content;
   tags = updatePreview(parseMdFull($editor.firstChild.value), $preview);
-  try {
-    ChessMd($preview, {});
-  } catch (e) {}  
+  ChessMd($preview, {});
 
   element.appendChild($wrapper);
 

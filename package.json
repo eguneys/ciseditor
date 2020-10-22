@@ -1,12 +1,13 @@
 {
   "name": "ciseditor",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "dist/bundle_umd.js",
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --port=3000 --mode=development",
     "build": "webpack --config webpack.config.js --env=production",
-    "build-dev": "webpack --config webpack.config.js"
+    "build-dev": "webpack --config webpack.config.js",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
@@ -21,7 +22,5 @@
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   },
-  "dependencies": {
-    "chessmd": "^1.1.0"
-  }
+  "dependencies": {}
 }
