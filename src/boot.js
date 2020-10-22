@@ -4,4 +4,4 @@ const main = require('./main');
 
 module.exports = main.app;
 
-console.log('[CisEditor]');
+module.exports.version = __VERSION__;
