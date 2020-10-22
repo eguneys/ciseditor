@@ -1,3 +1,4 @@
+import throttle from './throttle';
 import { scrollPreview, renderApp } from './render';
 
 import ChessMd from 'chessmd';
@@ -34,13 +35,13 @@ export function app(element, options = {}) {
               scrollPreview($preview, tag.$_);
             }
           },
-          input: _ => {
+          input: throttle(2000, _ => {
             fInput(_);
             tags = updatePreview(parseMdFull(_), $preview);
             try {
               ChessMd($preview, {});
             } catch (e) {}
-          }});
+          })});
 
   $editor.firstChild.value = content;
   tags = updatePreview(parseMdFull($editor.firstChild.value), $preview);
