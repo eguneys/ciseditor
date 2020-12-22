@@ -1,9 +1,9 @@
 import throttle from './throttle';
 import { scrollPreview, renderApp } from './render';
 
-import ChessMd from 'chessmd';
-import { md } from 'chessmd';
-let { parseMdFull, updatePreview } = md;
+import ChessMd from 'chessm';
+// import { md } from 'chessmd';
+// let { parseMdFull, updatePreview } = md;
 
 export function app(element, options = {}) {
 
@@ -13,7 +13,7 @@ export function app(element, options = {}) {
     fInput = () => {};
   }
 
-  let tags;
+  let tags = {};
 
   let { $wrapper, 
         $editor,
@@ -37,13 +37,23 @@ export function app(element, options = {}) {
           },
           input: throttle(2000, _ => {
             fInput(_);
-            tags = updatePreview(parseMdFull(_), $preview);
-            ChessMd($preview, {});
+            // tags = updatePreview(parseMdFull(_), $preview);
+
+            let toRemove = [];
+            let $_ = $preview.firstChild;
+            while ($_) {
+              toRemove.push($_);
+              $_ = $_.nextSibling;
+            }
+
+            for (let $_ of toRemove) $preview.removeChild($_);
+
+            ChessMd($preview, { md: _ });
           })});
 
   $editor.firstChild.value = content;
-  tags = updatePreview(parseMdFull($editor.firstChild.value), $preview);
-  ChessMd($preview, {});
+  //tags = updatePreview(parseMdFull($editor.firstChild.value), $preview);
+  ChessMd($preview, { md: $editor.firstChild.value });
 
   element.appendChild($wrapper);
 

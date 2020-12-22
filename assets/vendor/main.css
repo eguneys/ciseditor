@@ -7,6 +7,7 @@ md-wrap {
   position: absolute;
   width: 100%;
   height: 100%;
+  display: block;
 }
 
 md-wrap coords {
@@ -114,18 +115,22 @@ md-wrap svg {
   opacity: 0.6;
 }
 
-span[data-line] .moven {
+span.line .moven {
   user-select: none;
 }
 
-span[data-line] .movem {
+span.line .movem {
   user-select: none;
   border-radius: 4px;
 }
 
-span[data-line] span.movem:hover {
+span.line span.movem:hover {
   background: #ED7272;
   cursor: pointer;
+}
+
+span[data-err] {
+  color: #ff2222;
 }
 
 span.depth0 {

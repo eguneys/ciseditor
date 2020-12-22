@@ -23,6 +23,6 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
-    "chessmd": "^1.3.0"
+    "chessm": "^1.0.0"
   }
 }
