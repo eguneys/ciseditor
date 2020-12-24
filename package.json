@@ -1,6 +1,6 @@
 {
   "name": "ciseditor",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "dist/bundle_umd.js",
   "license": "MIT",
   "scripts": {
